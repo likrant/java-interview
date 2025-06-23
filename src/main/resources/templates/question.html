@@ -6,6 +6,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css"/>
     <link rel="stylesheet" th:href="@{/style.css}"/>
+    <link rel="stylesheet" th:href="@{/github-markdown-light.css}" media="(prefers-color-scheme: light)"/>
+    <link rel="stylesheet" th:href="@{/github-markdown-dark.css}" media="(prefers-color-scheme: dark)"/>
     <script th:src="@{/script.js}" defer></script>
 </head>
 <body class="flex min-h-full flex-col bg-white dark:bg-slate-900">
@@ -13,10 +15,10 @@
 <h1 th:text="'Категории: ' + ${#strings.listJoin(categories, ', ')}"></h1>
 <div th:if="${qa != null}">
     <h2 th:text="${qa.category}"></h2>
-    <p th:utext="${qa.question}"></p>
+    <div class="markdown-body" th:utext="${qa.question}"></div>
     <details>
         <summary>Ответ</summary>
-        <p th:utext="${qa.answer}"></p>
+        <div class="markdown-body" th:utext="${qa.answer}"></div>
     </details>
 </div>
 <div th:if="${qa == null}">
