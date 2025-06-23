@@ -7,6 +7,7 @@
 <body>
 <h1 th:text="'Категории: ' + ${#strings.listJoin(categories, ', ')}"></h1>
 <div th:if="${qa != null}">
+    <h2 th:text="${qa.category}"></h2>
     <p th:text="${qa.question}"></p>
     <details>
         <summary>Answer</summary>
@@ -16,6 +17,8 @@
 <div th:if="${qa == null}">
     <p>No questions found.</p>
 </div>
-<a href="/">Back</a>
+<a th:href="@{/}">К категориям</a>
+<a th:href="@{/question(nav='back')}">Назад</a>
+<a th:href="@{/question(nav='next')}">Следующий</a>
 </body>
 </html>
