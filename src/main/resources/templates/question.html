@@ -15,10 +15,10 @@
 <h1 th:text="'Категории: ' + ${#strings.listJoin(categories, ', ')}"></h1>
 <div th:if="${qa != null}">
     <h2 th:text="${qa.category}"></h2>
-    <div class="markdown-body" th:utext="${qa.question}"></div>
-    <details>
+    <div class="question markdown-body" th:utext="${qa.question}"></div>
+    <details class="answer-container">
         <summary>Ответ</summary>
-        <div class="markdown-body" th:utext="${qa.answer}"></div>
+        <div class="answer markdown-body" th:utext="${qa.answer}"></div>
     </details>
 </div>
 <div th:if="${qa == null}">
