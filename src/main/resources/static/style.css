@@ -8,7 +8,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
-    font-size: 1.25rem; /* enlarge text */
+    font-size: 1.875rem; /* enlarge text by 50% */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,22 +18,25 @@ body {
     }
 }
 h1, h2, p {
-    margin: 0.5em 0;
+    margin: 0.75em 0; /* increased spacing */
 }
 
 h1 {
-    font-size: 2em;
+    font-family: "Georgia", "Times New Roman", serif; /* distinct font */
+    font-size: 4rem; /* significantly larger */
     font-weight: 700;
-    margin-bottom: 0.75em;
+    margin-bottom: 1.125em; /* increased spacing */
 }
 
 h2 {
-    font-size: 1.5em;
+    font-family: "Georgia", "Times New Roman", serif; /* distinct font */
+    font-size: 3rem; /* significantly larger */
     font-weight: 600;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.75em; /* increased spacing */
 }
 
 ul { list-style: none; padding: 0; }
+ul li { margin-bottom: 0.75em; }
 summary {
     cursor: pointer;
     font-weight: bold;
@@ -49,46 +52,52 @@ main {
     padding: 1rem;
     text-align: left;
 }
+
+.markdown-body {
+    font-size: 1.5em; /* larger markdown text */
+}
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-button.btn {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
+/* style all buttons and button-like links */
+.btn {
+    padding-top: 0.5rem; /* increased padding */
+    padding-bottom: 0.5rem;
     font-weight: 700;
-    font-size: 1.05rem;
+    font-size: 1.575rem; /* 50% larger */
 }
 
 .question {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem; /* increased spacing */
 }
 
 details.answer-container {
-    margin-top: 1rem;
+    margin-top: 1.5rem; /* increased spacing */
 }
 
 details.answer-container summary {
-    background-color: #eff6ff;
-    padding: 0.5rem 1rem;
+    background-color: #1f2937; /* dark style */
+    padding: 0.75rem 1.25rem; /* increased padding */
     border-radius: 0.375rem;
-    border: 1px solid #bfdbfe;
-    color: #1e40af;
-    font-size: 1.1em;
+    border: 1px solid #0f172a;
+    color: #f8fafc;
+    font-size: 1.65em; /* 50% larger */
     font-weight: 600;
     transition: background-color 0.3s, color 0.3s;
     position: relative;
 }
 
 details.answer-container summary:hover {
-    background-color: #dbeafe;
+    background-color: #374151;
 }
 
 details.answer-container summary::after {
     content: "\25BC";
     position: absolute;
     right: 0.75rem;
+    color: #f8fafc; /* ensure arrow matches text */
     transition: transform 0.3s ease;
 }
 
