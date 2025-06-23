@@ -12,10 +12,10 @@
 <h1 th:text="'Категории: ' + ${#strings.listJoin(categories, ', ')}"></h1>
 <div th:if="${qa != null}">
     <h2 th:text="${qa.category}"></h2>
-    <p th:text="${qa.question}"></p>
+    <p th:utext="${qa.question}"></p>
     <details>
         <summary>Ответ</summary>
-        <p th:text="${qa.answer}"></p>
+        <p th:utext="${qa.answer}"></p>
     </details>
 </div>
 <div th:if="${qa == null}">
