@@ -1,14 +1,20 @@
-/* Dark theme styles (2024-2025) */
+/* Base layout inspired by syntax.tailwindui.com */
 body {
-    background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
-    color: #f0f0f0;
-    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    color: #0f172a;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+        Arial, sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
     min-height: 100vh;
     margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #0f172a;
+        color: #f1f5f9;
+    }
 }
 h1, h2, p {
     margin: 0.5em 0;
@@ -22,6 +28,13 @@ summary {
 details.open > * { animation: fadeIn 0.5s ease forwards; }
 details[open] summary::after {
     animation: fadeIn 0.5s ease forwards;
+}
+main {
+    width: 100%;
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 1rem;
+    text-align: left;
 }
 @keyframes fadeIn {
     from { opacity: 0; }
