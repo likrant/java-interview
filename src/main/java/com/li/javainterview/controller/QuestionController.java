@@ -5,6 +5,9 @@ import com.li.javainterview.model.QuestionAnswer;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -48,7 +51,9 @@ public class QuestionController {
                                  HttpSession session,
                                  Model model) {
         if (categories != null) {
-            Cookie c = new Cookie("categories", String.join(",", categories));
+            String raw = String.join(",", categories);
+            String encoded = URLEncoder.encode(raw, StandardCharsets.UTF_8);
+            Cookie c = new Cookie("categories", encoded);
             c.setPath("/");
             c.setMaxAge(60 * 60 * 24 * 30);
             response.addCookie(c);
@@ -101,7 +106,13 @@ public class QuestionController {
     }
 
     private List<String> parseCategories(String value) {
-        return Arrays.stream(value.split(","))
+        String decoded;
+        try {
+            decoded = URLDecoder.decode(value, StandardCharsets.UTF_8);
+        } catch (IllegalArgumentException e) {
+            decoded = "";
+        }
+        return Arrays.stream(decoded.split(","))
                 .map(String::trim)
                 .filter(s -> !s.isEmpty())
                 .toList();
