@@ -1,0 +1,29 @@
+/* Dark theme styles (2024-2025) */
+body {
+    background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+    color: #f0f0f0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    margin: 0;
+}
+h1, h2, p {
+    margin: 0.5em 0;
+}
+
+ul { list-style: none; padding: 0; }
+summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+details.open > * { animation: fadeIn 0.5s ease forwards; }
+details[open] summary::after {
+    animation: fadeIn 0.5s ease forwards;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
