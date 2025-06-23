@@ -1,24 +1,28 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" data-theme="synthwave">
 <head>
     <title>Вопрос</title>
     <meta charset="UTF-8"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css"/>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <script th:src="@{/script.js}" defer></script>
 </head>
-<body>
+<body class="min-h-screen flex flex-col items-center text-center p-4">
 <h1 th:text="'Категории: ' + ${#strings.listJoin(categories, ', ')}"></h1>
 <div th:if="${qa != null}">
     <h2 th:text="${qa.category}"></h2>
     <p th:text="${qa.question}"></p>
     <details>
-        <summary>Answer</summary>
+        <summary>Ответ</summary>
         <p th:text="${qa.answer}"></p>
     </details>
 </div>
 <div th:if="${qa == null}">
     <p>No questions found.</p>
 </div>
-<a th:href="@{/}">К категориям</a>
-<a th:href="@{/question(nav='back')}">Назад</a>
-<a th:href="@{/question(nav='next')}">Следующий</a>
+<a th:href="@{/}" class="btn btn-primary m-1">К категориям</a>
+<a th:href="@{/question(nav='back')}" class="btn m-1">Назад</a>
+<a th:href="@{/question(nav='next')}" class="btn m-1">Следующий</a>
 </body>
 </html>
