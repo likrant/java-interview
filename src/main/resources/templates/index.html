@@ -12,7 +12,7 @@
 <main class="mx-auto w-full max-w-2xl px-4 sm:px-6 lg:px-8">
 <h1>Выберите категории</h1>
 <form action="/question" method="get">
-    <ul>
+    <ul class="categories-list">
         <li th:each="cat : ${categories}">
             <label>
                 <input type="checkbox" name="category" th:value="${cat}" th:checked="${selectedCategories != null} ? ${selectedCategories.contains(cat)} : false"/>

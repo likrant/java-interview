@@ -37,6 +37,16 @@ h2 {
 
 ul { list-style: none; padding: 0; }
 ul li { margin-bottom: 0.25em; }
+.categories-list {
+    font-size: 75%; /* 25% smaller text */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* two columns */
+    gap: 0.25rem 1rem;
+}
+.categories-list li {
+    padding-top: 0.25rem; /* 50% less vertical padding */
+    padding-bottom: 0.25rem;
+}
 summary {
     cursor: pointer;
     font-weight: bold;
