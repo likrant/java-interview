@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Вопрос</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<h1 th:text="'Категории: ' + ${#strings.listJoin(categories, ', ')}"></h1>
+<div th:if="${qa != null}">
+    <p th:text="${qa.question}"></p>
+    <details>
+        <summary>Answer</summary>
+        <p th:text="${qa.answer}"></p>
+    </details>
+</div>
+<div th:if="${qa == null}">
+    <p>No questions found.</p>
+</div>
+<a href="/">Back</a>
+</body>
+</html>

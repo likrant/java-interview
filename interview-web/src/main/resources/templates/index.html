@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Interview Questions</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<h1>Выберите категории</h1>
+<form action="/question" method="get">
+    <ul>
+        <li th:each="cat : ${categories}">
+            <label>
+                <input type="checkbox" name="category" th:value="${cat}"/>
+                <span th:text="${cat}"></span>
+            </label>
+        </li>
+    </ul>
+    <button type="submit">Получить вопросы</button>
+</form>
+</body>
+</html>
