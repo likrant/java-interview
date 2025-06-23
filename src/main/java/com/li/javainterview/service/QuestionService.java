@@ -77,7 +77,7 @@ public class QuestionService {
                                 String link = m.group(2);
                                 String fileName = link.split("#", 2)[0];
                                 String answer = parseQuestionFile(fileName, question);
-                                list.add(new QuestionAnswer(question, answer));
+                                list.add(new QuestionAnswer(category, question, answer));
                             }
                         } else if (qLine.startsWith("## ") || qLine.startsWith("[к оглавлению") || qLine.isEmpty()) {
                             break;

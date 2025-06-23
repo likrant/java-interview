@@ -10,7 +10,7 @@
     <ul>
         <li th:each="cat : ${categories}">
             <label>
-                <input type="checkbox" name="category" th:value="${cat}"/>
+                <input type="checkbox" name="category" th:value="${cat}" th:checked="${selectedCategories != null} ? ${selectedCategories.contains(cat)} : false"/>
                 <span th:text="${cat}"></span>
             </label>
         </li>
