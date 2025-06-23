@@ -6,6 +6,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -19,9 +20,11 @@ public class QuestionService {
     private final Map<String, List<QuestionAnswer>> questionsByCategory = new LinkedHashMap<>();
     private final Random random = new Random();
     private final ResourceLoader resourceLoader;
+    private final MarkdownService markdownService;
 
-    public QuestionService(ResourceLoader resourceLoader) {
+    public QuestionService(ResourceLoader resourceLoader, MarkdownService markdownService) {
         this.resourceLoader = resourceLoader;
+        this.markdownService = markdownService;
     }
 
     private static final Pattern LINK_PATTERN = Pattern.compile("\\+ \\[(.+?)\\]\\((.+?)\\)");
@@ -73,10 +76,12 @@ public class QuestionService {
                         if (qLine.startsWith("+ [")) {
                             Matcher m = LINK_PATTERN.matcher(qLine);
                             if (m.find()) {
-                                String question = m.group(1);
+                                String questionRaw = m.group(1);
                                 String link = m.group(2);
                                 String fileName = link.split("#", 2)[0];
-                                String answer = parseQuestionFile(fileName, question);
+                                String answerMd = parseQuestionFile(fileName, questionRaw);
+                                String question = markdownService.toHtml(questionRaw);
+                                String answer = markdownService.toHtml(answerMd);
                                 list.add(new QuestionAnswer(category, question, answer));
                             }
                         } else if (qLine.startsWith("## ") || qLine.startsWith("[к оглавлению") || qLine.isEmpty()) {
