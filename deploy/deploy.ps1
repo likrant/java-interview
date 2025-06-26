@@ -23,13 +23,11 @@ if (-not $azCmd) {
 
 $null = az account show 2>$null
 if ($LASTEXITCODE -ne 0) {
-    az login --tenant $Env:TENANT_ID
+    az login --tenant $Env:TENANT_ID --subscription $Env:SUBSCRIPTION_ID | Out-Null
+} else {
+    az account set --subscription $Env:SUBSCRIPTION_ID | Out-Null
 }
-$null = az account show --subscription $Env:SUBSCRIPTION_ID 2>$null
-if ($LASTEXITCODE -ne 0) {
-    az login --tenant $Env:TENANT_ID
-}
-az account set --subscription $Env:SUBSCRIPTION_ID
+
 az acr login --name $Env:ACR_NAME
 $RepoRoot = Resolve-Path (Join-Path $PSScriptRoot '..')
 docker build -f "$PSScriptRoot/Dockerfile" -t $Env:IMAGE_NAME $RepoRoot
